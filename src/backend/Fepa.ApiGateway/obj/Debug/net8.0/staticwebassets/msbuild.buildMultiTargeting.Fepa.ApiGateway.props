@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Fepa.ApiGateway.props" />
+</Project>

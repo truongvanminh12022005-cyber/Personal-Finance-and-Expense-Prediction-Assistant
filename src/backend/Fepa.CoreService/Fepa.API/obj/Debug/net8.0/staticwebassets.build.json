@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "sVQE6qkMn/gnTeHzzOmnrba7xn7nusimwXzkCW0X5+c=",
+  "Source": "Fepa.API",
+  "BasePath": "_content/Fepa.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

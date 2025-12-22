@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "RpqHSyoBlaLk+mL0nahGzXsf13K4Yda2lFdarXl6ZsI=",
+  "Source": "Fepa.ApiGateway",
+  "BasePath": "_content/Fepa.ApiGateway",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
