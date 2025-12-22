@@ -28,5 +28,22 @@ namespace Fepa.API.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+    
+
+
+[HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequest request)
+        {
+            try
+            {
+                var token = await _authService.LoginAsync(request);
+                // Trả về Token cho người dùng
+                return Ok(new { token = token });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
     }
 }

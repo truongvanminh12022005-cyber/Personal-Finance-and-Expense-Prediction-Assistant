@@ -4,15 +4,18 @@ using Microsoft.Extensions.DependencyInjection;
 using Fepa.Application.Interfaces;
 using Fepa.Application.Services;
 using Fepa.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. Đăng ký các dịch vụ (Services)
+// Đăng ký các dịch vụ (Services)
 builder.Services.AddControllers(); 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// 2. Đăng ký kết nối Database 
+// Đăng ký kết nối Database 
 builder.Services.AddDbContext<FepaDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -20,9 +23,25 @@ builder.Services.AddDbContext<FepaDbContext>(options =>
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
+// Cấu hình xác thực bằng JWT
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
+        };
+    });
+
 var app = builder.Build();
 
-// 3. Cấu hình Pipeline (Middleware)
+// Cấu hình Pipeline (Middleware)
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -30,6 +49,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

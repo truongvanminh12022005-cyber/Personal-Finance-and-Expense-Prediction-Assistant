@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fepa.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20e12094eb672ab1a67b589489d9c66f37a5a56e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b11d199501405499ade189699fa164ffd456cef")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fepa.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fepa.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
