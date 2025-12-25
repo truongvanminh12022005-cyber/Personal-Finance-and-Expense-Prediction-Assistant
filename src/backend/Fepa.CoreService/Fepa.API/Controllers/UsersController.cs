@@ -22,5 +22,12 @@ namespace Fepa.API.Controllers
             var users = await _userRepository.GetAllAsync();
             return Ok(users);
         }
+[HttpDelete("{id}")]
+public async Task<IActionResult> DeleteUser(Guid id)
+{
+    await _userRepository.DeleteAsync(id);
+    return NoContent(); 
+}
+
     }
 }
