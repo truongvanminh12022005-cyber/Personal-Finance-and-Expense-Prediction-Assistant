@@ -1,7 +1,9 @@
 using Fepa.Application.Interfaces;
 using Fepa.Domain.Entities;
 using Fepa.Infrastructure.Persistence;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore; 
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Fepa.Infrastructure.Repositories
 {
@@ -23,6 +25,10 @@ namespace Fepa.Infrastructure.Repositories
         {
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
+        }
+        public async Task<IEnumerable<User>> GetAllAsync()
+        {
+            return await _context.Users.ToListAsync();
         }
     }
 }

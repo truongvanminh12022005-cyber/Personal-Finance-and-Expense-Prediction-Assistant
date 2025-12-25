@@ -10,6 +10,16 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()   
+              .AllowAnyMethod()   
+              .AllowAnyHeader();  
+    });
+});
+
 // Đăng ký các dịch vụ (Services)
 builder.Services.AddControllers(); 
 builder.Services.AddEndpointsApiExplorer();
@@ -41,7 +51,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 var app = builder.Build();
 
-// Cấu hình Pipeline (Middleware)
+// Cấu hình Pipeline 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -49,6 +59,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAll"); 
 
 app.UseAuthentication();
 
