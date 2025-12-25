@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/Auth/LoginPage';
 import MainLayout from './layouts/MainLayout';
 import UserPage from './pages/Users/UserPage'; 
+import BlogPage from './pages/Blogs/BlogPage';
 
 
 const Dashboard = () => <h2>📊 Thống kê doanh thu & người dùng</h2>;
@@ -21,7 +22,7 @@ const App = () => {
           
           <Route path="users" element={<UserPage />} />
           
-          <Route path="blogs" element={<Blogs />} />
+          <Route path="blogs" element={<BlogPage />} />
         </Route>
 
       </Routes>

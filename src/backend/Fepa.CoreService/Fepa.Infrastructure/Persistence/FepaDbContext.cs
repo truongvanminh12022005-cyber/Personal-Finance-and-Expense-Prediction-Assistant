@@ -9,12 +9,12 @@ namespace Fepa.Infrastructure.Persistence
         {
         }
 
-        // Khai báo các bảng
         public DbSet<User> Users { get; set; }
+
+        public DbSet<Blog> Blogs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Tại đây có thể cấu hình thêm (ví dụ: Email là duy nhất)
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();

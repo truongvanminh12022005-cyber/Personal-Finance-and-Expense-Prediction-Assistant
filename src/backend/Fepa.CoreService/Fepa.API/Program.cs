@@ -32,6 +32,7 @@ builder.Services.AddDbContext<FepaDbContext>(options =>
 // Đăng ký Dependency Injection
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 
 // Cấu hình xác thực bằng JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
