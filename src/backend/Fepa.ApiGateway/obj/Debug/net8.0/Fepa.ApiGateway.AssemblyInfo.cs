@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fepa.ApiGateway")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+950157984f8734a73967fe26266a59c5e252f21b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9db95b38ebe7fe7a07bf8a344c4525e12082fb47")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fepa.ApiGateway")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fepa.ApiGateway")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
