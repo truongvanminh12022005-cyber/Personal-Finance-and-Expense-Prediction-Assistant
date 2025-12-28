@@ -14,3 +14,19 @@ C:\Users\ASUS\FEPA\src\backend\Fepa.CoreService\Fepa.Application\obj\Debug\net8.
 C:\Users\ASUS\FEPA\src\backend\Fepa.CoreService\Fepa.Application\obj\Debug\net8.0\refint\Fepa.Application.dll
 C:\Users\ASUS\FEPA\src\backend\Fepa.CoreService\Fepa.Application\obj\Debug\net8.0\Fepa.Application.pdb
 C:\Users\ASUS\FEPA\src\backend\Fepa.CoreService\Fepa.Application\obj\Debug\net8.0\ref\Fepa.Application.dll
+C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Application\bin\Debug\net8.0\Fepa.Application.deps.json
+C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Application\bin\Debug\net8.0\Fepa.Application.dll
+C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Application\bin\Debug\net8.0\Fepa.Application.pdb
+C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Application\bin\Debug\net8.0\Fepa.Domain.dll
+C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Application\bin\Debug\net8.0\Fepa.Domain.pdb
+C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Application\obj\Debug\net8.0\Fepa.Application.csproj.AssemblyReference.cache
+C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Application\obj\Debug\net8.0\Fepa.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Application\obj\Debug\net8.0\Fepa.Application.AssemblyInfoInputs.cache
+C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Application\obj\Debug\net8.0\Fepa.Application.AssemblyInfo.cs
+C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Application\obj\Debug\net8.0\Fepa.Application.csproj.CoreCompileInputs.cache
+C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Application\obj\Debug\net8.0\Fepa.Application.sourcelink.json
+C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Application\obj\Debug\net8.0\Fepa.App.937F6536.Up2Date
+C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Application\obj\Debug\net8.0\Fepa.Application.dll
+C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Application\obj\Debug\net8.0\refint\Fepa.Application.dll
+C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Application\obj\Debug\net8.0\Fepa.Application.pdb
+C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Application\obj\Debug\net8.0\ref\Fepa.Application.dll

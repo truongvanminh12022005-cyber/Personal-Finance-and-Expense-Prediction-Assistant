@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZO6l2h50JXCOXp912a6FEjuZacXPumBUjXEDferO8MwgUXEjJjLHg5ngNLYVyTISqYhPWPApN1YDdirF2X1DhQ==",
+  "dgSpecHash": "lrtPZZE801ZqX/LQZ7qO1hM/kG5u2Wa/asgWQIj5RFWejzD20TAQyOR5GPGJELG5l8ufVoNVP8DzEhkFcCX+7g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ASUS\\FEPA\\src\\backend\\Fepa.ApiGateway\\Fepa.ApiGateway.csproj",
+  "projectFilePath": "C:\\Users\\Van Minh\\Documents\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.ApiGateway\\Fepa.ApiGateway.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
