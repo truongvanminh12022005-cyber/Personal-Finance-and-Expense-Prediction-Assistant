@@ -49,19 +49,16 @@ namespace Fepa.Application.Services
         // CHỨC NĂNG ĐĂNG NHẬP 
         public async Task<string> LoginAsync(LoginRequest request)
         {
-            // Bước 1: Tìm user theo email
             var user = await _userRepository.GetByEmailAsync(request.Email);
             
-            // Nếu không tìm thấy User HOẶC Mật khẩu sai (Verify trả về false)
-            if (user == null || !BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
+            if (user == null || user.PasswordHash != request.Password)
             {
                 throw new Exception("Tài khoản hoặc mật khẩu không đúng.");
             }
+            
 
-            // Bước 2: Nếu đúng hết -> Tạo Token và trả về
             return GenerateJwtToken(user);
         }
-
         //  HÀM TẠO TOKEN 
         private string GenerateJwtToken(User user)
         {

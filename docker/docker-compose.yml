@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # 1. Database
+  db:
+    image: postgres:16-alpine  # <--- SỬA DÒNG NÀY (Dùng bản 16 cho lành)
+    container_name: fepa-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=FepaDb
+    ports:
+      - "5432:5432" # Để 5432 cho chuẩn, nếu máy bạn bận port này thì đổi 5434:5432
+    volumes:
+      - postgres_data_new:/var/lib/postgresql/data  # <--- SỬA TÊN THÀNH _new
+
+  # 2. Backend API
+  api:
+    build:
+      context: ../src/backend/Fepa.CoreService
+      dockerfile: Fepa.API/Dockerfile
+    container_name: fepa-api
+    ports:
+      - "5002:8080"
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=FepaDb;Username=postgres;Password=123456
+    depends_on:
+      - db
+
+  # 3. Frontend Web Admin
+  web-admin:
+    build:
+      context: ../src/clients/web-admin
+      dockerfile: Dockerfile
+    container_name: fepa-web-admin
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+
+# --- QUAN TRỌNG: PHẦN NÀY LÀ CÁI BẠN ĐANG THIẾU ---
+volumes:
+  postgres_data_new:  # <--- SỬA TÊN Ở ĐÂY NỮA CHO KHỚP Ở TRÊN

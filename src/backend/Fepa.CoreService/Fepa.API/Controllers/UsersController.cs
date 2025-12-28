@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization; // Chỉ giữ 1 dòng này thôi
 using Fepa.Application.Interfaces;
-using Fepa.Domain.Entities; 
+using Fepa.Domain.Entities;
 
 namespace Fepa.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize] 
+    [Authorize]
     public class UsersController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
@@ -17,7 +17,7 @@ namespace Fepa.API.Controllers
             _userRepository = userRepository;
         }
 
-        // LẤY DANH SÁCH
+        // 1. LẤY DANH SÁCH
         [HttpGet]
         public async Task<IActionResult> GetAllUsers()
         {
@@ -25,41 +25,36 @@ namespace Fepa.API.Controllers
             return Ok(users);
         }
 
-        // XÓA USER
+        // 2. XÓA USER
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(Guid id)
         {
             await _userRepository.DeleteAsync(id);
-            return NoContent(); 
+            return NoContent();
         }
 
-        // CREATE
+        // 3. TẠO MỚI (QUAN TRỌNG: Đã mở cửa cho người lạ)
         [HttpPost]
+        [AllowAnonymous] 
         public async Task<IActionResult> Create(User user)
         {
-            // Kiểm tra xem email đã tồn tại chưa
+            // Kiểm tra email trùng
             var existUser = await _userRepository.GetByEmailAsync(user.Email);
             if (existUser != null) return BadRequest("Email này đã có người dùng!");
 
             user.Id = Guid.NewGuid();
-            
             await _userRepository.AddAsync(user);
             return Ok(user);
         }
 
-        // UPDATE
+        // 4. CẬP NHẬT
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid id, User user)
         {
-            
-            var existingUser = await _userRepository.GetByEmailAsync(user.Email); 
-            
+            var existingUser = await _userRepository.GetByEmailAsync(user.Email);
             if (existingUser == null) return NotFound();
 
-            // Cập nhật tên mới
             existingUser.FullName = user.FullName;
-            
-            // Gọi lệnh lưu xuống Database
             await _userRepository.UpdateAsync(existingUser);
             return NoContent();
         }
