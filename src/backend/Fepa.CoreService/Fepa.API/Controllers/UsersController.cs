@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization; // Chỉ giữ 1 dòng này thôi
+using Microsoft.AspNetCore.Authorization; 
 using Fepa.Application.Interfaces;
 using Fepa.Domain.Entities;
 
@@ -33,7 +33,6 @@ namespace Fepa.API.Controllers
             return NoContent();
         }
 
-        // 3. TẠO MỚI (QUAN TRỌNG: Đã mở cửa cho người lạ)
         [HttpPost]
         [AllowAnonymous] 
         public async Task<IActionResult> Create(User user)

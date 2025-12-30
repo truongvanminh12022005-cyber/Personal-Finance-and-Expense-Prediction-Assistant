@@ -7,7 +7,7 @@ namespace Fepa.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    // [Authorize] 
+    [Authorize] 
     public class BlogsController : ControllerBase
     {
         private readonly IBlogRepository _blogRepository;

@@ -55,7 +55,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 var app = builder.Build();
 
-// --- Cấu hình Pipeline (Middleware) ---
+
 
 if (app.Environment.IsDevelopment())
 {
@@ -63,7 +63,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// app.UseHttpsRedirection(); // Có thể comment lại nếu chạy Docker nội bộ bị lỗi SSL
+
 
 app.UseCors("AllowAll");
 
@@ -72,16 +72,12 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// --- PHẦN QUAN TRỌNG: TỰ ĐỘNG TẠO BẢNG & ADMIN ---
+
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     try
     {
-        // Gọi hàm SeedAsync từ file DbInitializer.cs
-        // Hàm này sẽ tự động: 
-        // 1. Chạy Migration (Tạo bảng)
-        // 2. Tạo Admin mặc định (admin@fepa.com / 123456)
         await DbInitializer.SeedAsync(services);
     }
     catch (Exception ex)
@@ -89,6 +85,5 @@ using (var scope = app.Services.CreateScope())
         Console.WriteLine("--> LOI KHI KHOI TAO DATABASE: " + ex.Message);
     }
 }
-// --------------------------------------------------
 
 app.Run();
