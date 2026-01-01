@@ -34,3 +34,6 @@ C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\sr
 C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Infrastructure\obj\Debug\net8.0\refint\Fepa.Infrastructure.dll
 C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Infrastructure\obj\Debug\net8.0\Fepa.Infrastructure.pdb
 C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Infrastructure\obj\Debug\net8.0\ref\Fepa.Infrastructure.dll
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Infrastructure\obj\Debug\net8.0\Fepa.Infrastructure.dll
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Infrastructure\obj\Debug\net8.0\refint\Fepa.Infrastructure.dll
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Infrastructure\obj\Debug\net8.0\Fepa.Infrastructure.pdb

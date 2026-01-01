@@ -24,3 +24,29 @@ C:\Users\ASUS\FEPA\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\refint\Fepa.ApiG
 C:\Users\ASUS\FEPA\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\Fepa.ApiGateway.pdb
 C:\Users\ASUS\FEPA\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\Fepa.ApiGateway.genruntimeconfig.cache
 C:\Users\ASUS\FEPA\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\ref\Fepa.ApiGateway.dll
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\bin\Debug\net8.0\appsettings.json
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\bin\Debug\net8.0\Fepa.ApiGateway.exe
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\bin\Debug\net8.0\Fepa.ApiGateway.deps.json
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\bin\Debug\net8.0\Fepa.ApiGateway.runtimeconfig.json
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\bin\Debug\net8.0\Fepa.ApiGateway.dll
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\bin\Debug\net8.0\Fepa.ApiGateway.pdb
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\Fepa.ApiGateway.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\Fepa.ApiGateway.AssemblyInfoInputs.cache
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\Fepa.ApiGateway.AssemblyInfo.cs
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\Fepa.ApiGateway.csproj.CoreCompileInputs.cache
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\Fepa.ApiGateway.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\Fepa.ApiGateway.sourcelink.json
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\staticwebassets\msbuild.Fepa.ApiGateway.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\staticwebassets\msbuild.build.Fepa.ApiGateway.props
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Fepa.ApiGateway.props
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Fepa.ApiGateway.props
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\scopedcss\bundle\Fepa.ApiGateway.styles.css
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\Fepa.ApiGateway.dll
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\refint\Fepa.ApiGateway.dll
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\Fepa.ApiGateway.pdb
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\Fepa.ApiGateway.genruntimeconfig.cache
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.ApiGateway\obj\Debug\net8.0\ref\Fepa.ApiGateway.dll

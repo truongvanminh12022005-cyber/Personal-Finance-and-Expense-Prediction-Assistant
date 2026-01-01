@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fepa.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49730fdcc691e36f8c8b44e0d125847113a0832d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe52b0a127a192f0ecbc061b190bc74f88e4d70d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fepa.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fepa.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -246,3 +246,6 @@ C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\sr
 C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.API\obj\Debug\net8.0\Fepa.API.pdb
 C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.API\obj\Debug\net8.0\Fepa.API.genruntimeconfig.cache
 C:\Users\Van Minh\Documents\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.API\obj\Debug\net8.0\ref\Fepa.API.dll
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.API\obj\Debug\net8.0\Fepa.API.dll
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.API\obj\Debug\net8.0\refint\Fepa.API.dll
+C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.API\obj\Debug\net8.0\Fepa.API.pdb
