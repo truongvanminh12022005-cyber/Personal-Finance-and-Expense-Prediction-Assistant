@@ -1,6 +1,5 @@
 namespace Fepa.API
 {
-    /*
     /// <summary>
     /// Auth API Documentation
     /// 
@@ -203,5 +202,4 @@ namespace Fepa.API
         /// }
         /// </summary>
     }
-    */
 }

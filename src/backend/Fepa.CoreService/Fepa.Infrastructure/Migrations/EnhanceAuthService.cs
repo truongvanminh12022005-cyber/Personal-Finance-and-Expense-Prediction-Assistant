@@ -191,5 +191,6 @@ namespace Fepa.Infrastructure.Migrations
         // - ExpiresAt (DateTime)
         // - CreatedAt (DateTime)
         // - UsedAt (DateTime?)
-    }
-}
+   // }
+//}
+

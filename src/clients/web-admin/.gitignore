@@ -1,18 +1,10 @@
-# =========================
-# 1. C# / .NET BACKEND (QUAN TRỌNG NHẤT - ĐỂ SỬA LỖI)
-# =========================
-# Chặn các thư mục build sinh ra file rác binary
 **/bin/
 **/obj/
 
-# File cấu hình user riêng tư
 *.user
 *.userosscache
 *.sln.docstates
 
-# =========================
-# 2. NODE.JS / FRONTEND (Cái bạn vừa gửi)
-# =========================
 node_modules/
 dist/
 dist-ssr/
@@ -23,17 +15,10 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# =========================
-# 3. DOCKER & DATABASE
-# =========================
-# Chặn thư mục dữ liệu database để không push 1GB rác lên Git
 postgres_data/
 postgres_data_new/
 .env
 
-# =========================
-# 4. EDITOR / IDE
-# =========================
 .vscode/*
 !.vscode/extensions.json
 .idea/
