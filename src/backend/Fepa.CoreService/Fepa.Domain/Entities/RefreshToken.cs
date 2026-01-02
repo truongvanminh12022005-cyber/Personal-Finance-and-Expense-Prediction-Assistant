@@ -1,4 +1,4 @@
-/*
+
 namespace Fepa.Domain.Entities
 {
     public class RefreshToken
@@ -14,8 +14,7 @@ namespace Fepa.Domain.Entities
         public bool IsExpired => DateTime.UtcNow >= ExpiresAt;
         public bool IsValid => !IsRevoked && !IsExpired;
 
-        // Navigation property
+        
         public User? User { get; set; }
     }
 }
-/*

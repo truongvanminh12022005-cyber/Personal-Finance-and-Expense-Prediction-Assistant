@@ -1,4 +1,4 @@
-/*
+
 using Fepa.Domain.Entities;
 
 namespace Fepa.Application.Interfaces
@@ -14,4 +14,3 @@ namespace Fepa.Application.Interfaces
         Task DeleteExpiredAsync();
     }
 }
-/*

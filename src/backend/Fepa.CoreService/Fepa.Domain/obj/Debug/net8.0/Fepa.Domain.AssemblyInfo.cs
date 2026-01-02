@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fepa.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+624566e74317c0337ab3b84c4ced2bc75380ebf5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b18f16479ed7cbb248061a4d244cef1ab72642a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fepa.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fepa.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

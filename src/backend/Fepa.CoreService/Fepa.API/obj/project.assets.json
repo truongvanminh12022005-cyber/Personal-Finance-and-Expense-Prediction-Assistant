@@ -3680,35 +3680,42 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Van Minh\\.nuget\\packages\\": {}
+    "C:\\Users\\tranl\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.API\\Fepa.API.csproj",
+      "projectUniqueName": "D:\\XDPM\\Project_FEPA\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.API\\Fepa.API.csproj",
       "projectName": "Fepa.API",
-      "projectPath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.API\\Fepa.API.csproj",
-      "packagesPath": "C:\\Users\\Van Minh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.API\\obj\\",
+      "projectPath": "D:\\XDPM\\Project_FEPA\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.API\\Fepa.API.csproj",
+      "packagesPath": "C:\\Users\\tranl\\.nuget\\packages\\",
+      "outputPath": "D:\\XDPM\\Project_FEPA\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.API\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Van Minh\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\tranl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\Fepa.Application.csproj": {
-              "projectPath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\Fepa.Application.csproj"
+            "D:\\XDPM\\Project_FEPA\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\Fepa.Application.csproj": {
+              "projectPath": "D:\\XDPM\\Project_FEPA\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\Fepa.Application.csproj"
             },
-            "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Infrastructure\\Fepa.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Infrastructure\\Fepa.Infrastructure.csproj"
+            "D:\\XDPM\\Project_FEPA\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Infrastructure\\Fepa.Infrastructure.csproj": {
+              "projectPath": "D:\\XDPM\\Project_FEPA\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Infrastructure\\Fepa.Infrastructure.csproj"
             }
           }
         }
@@ -3722,7 +3729,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -3766,7 +3774,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,4 +1,4 @@
-/*
+
 using Fepa.Application.DTOs.Auth;
 using Fepa.Application.Interfaces;
 using Fepa.Domain.Entities;
@@ -25,49 +25,48 @@ namespace Fepa.Application.Services
             _logger = logger;
         }
 
-        // public async Task<LoginResponse> RefreshAccessTokenAsync(string refreshToken)
-        // {
-        //     var token = await _refreshTokenRepository.GetByTokenAsync(refreshToken);
-        //     if (token == null || !token.IsValid)
-        //         throw new UnauthorizedAccessException("Refresh token không hợp lệ");
+         public async Task<LoginResponse> RefreshAccessTokenAsync(string refreshToken)
+         {
+             var token = await _refreshTokenRepository.GetByTokenAsync(refreshToken);
+             if (token == null || !token.IsValid)
+                 throw new UnauthorizedAccessException("Refresh token không hợp lệ");
 
-        //     var user = await _userRepository.GetByIdAsync(token.UserId);
-        //     if (user == null || !user.IsActive)
-        //         throw new InvalidOperationException("Người dùng không tồn tại");
+             var user = await _userRepository.GetByIdAsync(token.UserId);
+             if (user == null || !user.IsActive)
+                 throw new InvalidOperationException("Người dùng không tồn tại");
 
-        //     var newAccessToken = _tokenService.GenerateAccessToken(user);
-        //     var newRefreshToken = _tokenService.GenerateRefreshToken();
+             var newAccessToken = _tokenService.GenerateAccessToken(user);
+             var newRefreshToken = _tokenService.GenerateRefreshToken();
 
-        //     await _refreshTokenRepository.RevokeAsync(token.Id);
-        //     var newTokenEntity = new RefreshToken
-        //     {
-        //         UserId = user.Id,
-        //         Token = newRefreshToken,
-        //         ExpiresAt = DateTime.UtcNow.AddDays(7)
-        //     };
-        //     await _refreshTokenRepository.AddAsync(newTokenEntity);
+             await _refreshTokenRepository.RevokeAsync(token.Id);
+             var newTokenEntity = new RefreshToken
+             {
+                 UserId = user.Id,
+                 Token = newRefreshToken,
+                 ExpiresAt = DateTime.UtcNow.AddDays(7)
+             };
+             await _refreshTokenRepository.AddAsync(newTokenEntity);
 
-        //     return new LoginResponse
-        //     {
-        //         AccessToken = newAccessToken,
-        //         RefreshToken = newRefreshToken,
-        //         ExpiresIn = 3600,
-        //         User = UserDto.FromEntity(user)
-        //     };
-        // }
+             return new LoginResponse
+             {
+                 AccessToken = newAccessToken,
+                 RefreshToken = newRefreshToken,
+                 ExpiresIn = 3600,
+                 User = UserDto.FromEntity(user)
+             };
+         }
 
-        // public async Task RevokeTokenAsync(string refreshToken)
-        // {
-        //     var token = await _refreshTokenRepository.GetByTokenAsync(refreshToken);
-        //     if (token != null)
-        //         await _refreshTokenRepository.RevokeAsync(token.Id);
-        // }
+         public async Task RevokeTokenAsync(string refreshToken)
+         {
+             var token = await _refreshTokenRepository.GetByTokenAsync(refreshToken);
+             if (token != null)
+                 await _refreshTokenRepository.RevokeAsync(token.Id);
+         }
 
-        // public async Task RevokeAllUserTokensAsync(Guid userId)
-        // {
-        //     await _refreshTokenRepository.RevokeAllByUserIdAsync(userId);
-        //     _logger.LogInformation($"All tokens revoked for user {userId}");
-        // }
+         public async Task RevokeAllUserTokensAsync(Guid userId)
+         {
+             await _refreshTokenRepository.RevokeAllByUserIdAsync(userId);
+             _logger.LogInformation($"All tokens revoked for user {userId}");
+         }
     }
 }
-/*

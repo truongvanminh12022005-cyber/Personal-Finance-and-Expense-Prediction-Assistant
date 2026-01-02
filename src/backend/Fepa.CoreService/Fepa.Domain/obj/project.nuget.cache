@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wVOJUy+Cyf2UgIaiAa/jkQDh04qn30cnBf3FUmWMZpwK/rZipE7+T1PsmDHjB53BNgniVnqDjVXyBAjR3qiCuQ==",
+  "dgSpecHash": "GaUhU3AuBBg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj",
+  "projectFilePath": "D:\\XDPM\\Project_FEPA\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

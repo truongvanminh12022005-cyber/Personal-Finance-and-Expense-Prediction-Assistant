@@ -1,4 +1,4 @@
-/*
+
 using Fepa.Application.Interfaces;
 using Fepa.Domain.Entities;
 using Microsoft.Extensions.Configuration;
@@ -7,7 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using System.Linq; // Thêm để dùng Enumerable
+using System.Linq; 
 
 namespace Fepa.Application.Services
 {
@@ -60,10 +60,10 @@ namespace Fepa.Application.Services
             }
         }
 
-        // Đã sửa Task.FromResult để xóa Warning CS1998
+        
         public Task<RefreshToken?> ValidateRefreshTokenAsync(string token)
         {
-            // Implementation sẽ được thực hiện ở Repository sau
+           
             return Task.FromResult<RefreshToken?>(null);
         }
 
@@ -91,4 +91,3 @@ namespace Fepa.Application.Services
         }
     }
 }
-/*
