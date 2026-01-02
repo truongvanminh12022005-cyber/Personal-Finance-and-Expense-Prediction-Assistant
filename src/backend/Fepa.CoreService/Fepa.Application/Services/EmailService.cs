@@ -1,12 +1,14 @@
 using Fepa.Application.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Net;
 using System.Net.Mail;
+using System.Threading.Tasks;
 
 namespace Fepa.Application.Services
 {
-    public class EmailService : IEmailService
+    public class EmailService : IEmailService, IDisposable
     {
         private readonly IConfiguration _configuration;
         private readonly ILogger<EmailService> _logger;
@@ -126,24 +128,30 @@ namespace Fepa.Application.Services
         {
             try
             {
-                var mailMessage = new MailMessage
+                using (var mailMessage = new MailMessage
                 {
                     From = new MailAddress(_configuration["Email:FromAddress"] ?? "noreply@fepa.com"),
                     Subject = subject,
                     Body = body,
                     IsBodyHtml = true
-                };
+                })
+                {
+                    mailMessage.To.Add(to);
 
-                mailMessage.To.Add(to);
-
-                await _smtpClient.SendMailAsync(mailMessage);
-                _logger.LogInformation($"Email sent successfully to {to}");
+                    await _smtpClient.SendMailAsync(mailMessage);
+                    _logger.LogInformation($"Email sent successfully to {to}");
+                }
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error sending email to {to}");
                 throw;
             }
+        }
+
+        public void Dispose()
+        {
+            _smtpClient?.Dispose();
         }
     }
 }
