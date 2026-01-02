@@ -5,6 +5,9 @@ using BCrypt.Net;
 using Fepa.Application.DTOs.Auth;
 using Fepa.Application.Interfaces;
 using Fepa.Domain.Entities;
+using Google.Apis.Auth;
+using System.Net.Http;
+using System.Text.Json;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
@@ -16,24 +19,30 @@ namespace Fepa.Application.Services
         private readonly IUserRepository _userRepository;
         private readonly IEmailService _emailService;
         private readonly IOtpService _otpService;
-        private readonly ITokenService _tokenService;
-        private readonly IConfiguration _configuration;
-        private readonly ILogger<AuthService> _logger;
+            private readonly ITokenService _tokenService;
+            private readonly IConfiguration _configuration;
+            private readonly IRefreshTokenRepository _refreshTokenRepository;
+            private readonly IHttpClientFactory _httpClientFactory;
+            private readonly ILogger<AuthService> _logger;
 
         public AuthService(
             IUserRepository userRepository,
             IEmailService emailService,
             IOtpService otpService,
-            ITokenService tokenService,
-            IConfiguration configuration,
-            ILogger<AuthService> logger)
+              ITokenService tokenService,
+              IConfiguration configuration,
+              IRefreshTokenRepository refreshTokenRepository,
+              IHttpClientFactory httpClientFactory,
+              ILogger<AuthService> logger)
         {
             _userRepository = userRepository;
             _emailService = emailService;
             _otpService = otpService;
-            _tokenService = tokenService;
-            _configuration = configuration;
-            _logger = logger;
+              _tokenService = tokenService;
+              _configuration = configuration;
+              _refreshTokenRepository = refreshTokenRepository;
+              _httpClientFactory = httpClientFactory;
+              _logger = logger;
         }
 
         #region Basic Authentication
@@ -321,15 +330,30 @@ namespace Fepa.Application.Services
 
         public async Task<RefreshTokenResponse> RefreshTokenAsync(RefreshTokenRequest request)
         {
-            // Validate refresh token (implementation would check against database)
-            // For now, simplified implementation
-
             if (string.IsNullOrWhiteSpace(request.RefreshToken))
                 throw new UnauthorizedAccessException("Refresh token không hợp lệ");
 
-            // Generate new tokens
-            var newAccessToken = "dummy"; // Would be generated from user
+            var existing = await _refreshTokenRepository.GetByTokenAsync(request.RefreshToken);
+            if (existing == null || !existing.IsValid)
+                throw new UnauthorizedAccessException("Refresh token không hợp lệ");
+
+            var user = await _userRepository.GetByIdAsync(existing.UserId);
+            if (user == null || !user.IsActive)
+                throw new InvalidOperationException("Người dùng không tồn tại");
+
+            var newAccessToken = _tokenService.GenerateAccessToken(user);
             var newRefreshToken = _tokenService.GenerateRefreshToken();
+
+            // Revoke old token and store new
+            await _refreshTokenRepository.RevokeAsync(existing.Id);
+            var newTokenEntity = new RefreshToken
+            {
+                UserId = user.Id,
+                RefreshTokenValue = newRefreshToken,
+                Token = newRefreshToken,
+                ExpiresAt = DateTime.UtcNow.AddDays(7)
+            };
+            await _refreshTokenRepository.AddAsync(newTokenEntity);
 
             return new RefreshTokenResponse
             {
@@ -341,7 +365,11 @@ namespace Fepa.Application.Services
 
         public async Task RevokeTokenAsync(Guid userId, string token)
         {
-            // Implementation would revoke token in database
+            var tokenEntity = await _refreshTokenRepository.GetByTokenAsync(token);
+            if (tokenEntity != null && tokenEntity.UserId == userId)
+            {
+                await _refreshTokenRepository.RevokeAsync(tokenEntity.Id);
+            }
             _logger.LogInformation($"Token revoked for user {userId}");
         }
 
@@ -351,14 +379,139 @@ namespace Fepa.Application.Services
 
         public async Task<LoginResponse> GoogleLoginAsync(OAuthLoginRequest request)
         {
-            // Implementation would validate IdToken with Google
-            throw new NotImplementedException("Google OAuth coming soon");
+            try
+            {
+                var googleClientId = _configuration["OAuth:Google:ClientId"];
+                var payload = await GoogleJsonWebSignature.ValidateAsync(request.IdToken, new GoogleJsonWebSignature.ValidationSettings { Audience = new[] { googleClientId } });
+
+                var user = await _userRepository.GetByEmailAsync(payload.Email);
+                if (user == null)
+                {
+                    user = new User
+                    {
+                        Email = payload.Email,
+                        FullName = payload.Name,
+                        GoogleId = payload.Subject,
+                        IsEmailVerified = payload.EmailVerified,
+                        IsActive = true,
+                        CreatedAt = DateTime.UtcNow,
+                        PasswordHash = BCrypt.Net.BCrypt.HashPassword(Guid.NewGuid().ToString())
+                    };
+                    await _userRepository.AddAsync(user);
+                }
+                else
+                {
+                    if (string.IsNullOrWhiteSpace(user.GoogleId))
+                    {
+                        user.GoogleId = payload.Subject;
+                        user.IsEmailVerified = true;
+                        await _userRepository.UpdateAsync(user);
+                    }
+                }
+
+                var accessToken = _tokenService.GenerateAccessToken(user);
+                var refreshToken = _tokenService.GenerateRefreshToken();
+
+                var tokenEntity = new RefreshToken
+                {
+                    UserId = user.Id,
+                    RefreshTokenValue = refreshToken,
+                    Token = refreshToken,
+                    ExpiresAt = DateTime.UtcNow.AddDays(7)
+                };
+                await _refreshTokenRepository.AddAsync(tokenEntity);
+
+                user.LastLoginAt = DateTime.UtcNow;
+                await _userRepository.UpdateAsync(user);
+
+                return new LoginResponse
+                {
+                    AccessToken = accessToken,
+                    RefreshToken = refreshToken,
+                    ExpiresIn = 3600,
+                    User = UserDto.FromEntity(user),
+                    RequiresTwoFactor = false
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Google OAuth error");
+                throw new UnauthorizedAccessException("Google token không hợp lệ");
+            }
         }
 
         public async Task<LoginResponse> FacebookLoginAsync(OAuthLoginRequest request)
         {
-            // Implementation would validate IdToken with Facebook
-            throw new NotImplementedException("Facebook OAuth coming soon");
+            try
+            {
+                var http = _httpClientFactory.CreateClient();
+                var response = await http.GetAsync($"https://graph.facebook.com/me?access_token={request.IdToken}&fields=id,name,email");
+                if (!response.IsSuccessStatusCode)
+                    throw new UnauthorizedAccessException("Facebook token không hợp lệ");
+
+                var content = await response.Content.ReadAsStringAsync();
+                using var doc = JsonDocument.Parse(content);
+                var root = doc.RootElement;
+                var facebookId = root.GetProperty("id").GetString();
+                var email = root.TryGetProperty("email", out var e) ? e.GetString() : null;
+                var name = root.TryGetProperty("name", out var n) ? n.GetString() : null;
+
+                if (string.IsNullOrWhiteSpace(email))
+                    throw new UnauthorizedAccessException("Facebook token không trả về email");
+
+                var user = await _userRepository.GetByEmailAsync(email!);
+                if (user == null)
+                {
+                    user = new User
+                    {
+                        Email = email!,
+                        FullName = name ?? email!,
+                        FacebookId = facebookId,
+                        IsEmailVerified = true,
+                        IsActive = true,
+                        CreatedAt = DateTime.UtcNow,
+                        PasswordHash = BCrypt.Net.BCrypt.HashPassword(Guid.NewGuid().ToString())
+                    };
+                    await _userRepository.AddAsync(user);
+                }
+                else
+                {
+                    if (string.IsNullOrWhiteSpace(user.FacebookId))
+                    {
+                        user.FacebookId = facebookId;
+                        await _userRepository.UpdateAsync(user);
+                    }
+                }
+
+                var accessToken = _tokenService.GenerateAccessToken(user);
+                var refreshToken = _tokenService.GenerateRefreshToken();
+
+                var tokenEntity = new RefreshToken
+                {
+                    UserId = user.Id,
+                    RefreshTokenValue = refreshToken,
+                    Token = refreshToken,
+                    ExpiresAt = DateTime.UtcNow.AddDays(7)
+                };
+                await _refreshTokenRepository.AddAsync(tokenEntity);
+
+                user.LastLoginAt = DateTime.UtcNow;
+                await _userRepository.UpdateAsync(user);
+
+                return new LoginResponse
+                {
+                    AccessToken = accessToken,
+                    RefreshToken = refreshToken,
+                    ExpiresIn = 3600,
+                    User = UserDto.FromEntity(user),
+                    RequiresTwoFactor = false
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Facebook OAuth error");
+                throw new UnauthorizedAccessException("Facebook OAuth thất bại");
+            }
         }
 
         #endregion

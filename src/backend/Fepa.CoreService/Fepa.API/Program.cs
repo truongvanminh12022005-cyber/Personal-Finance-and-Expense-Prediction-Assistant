@@ -10,39 +10,42 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-Console.WriteLine("--> PHIEN BAN CODE MOI: CO DATA SEEDING (AUTO ADMIN) <--");
+Console.WriteLine("--> PHIEN BAN: AUTO RESET & SEED ADMIN <--");
 
-// 1. Cấu hình CORS (Cho phép Web Admin truy cập)
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", policy =>
-    {
-        policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader();
-    });
+// 1. CORS
+builder.Services.AddCors(options => {
+    options.AddPolicy("AllowAll", policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 });
 
-// 2. Đăng ký các dịch vụ (Services)
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// 3. Đăng ký kết nối Database
+// 2. Database
 builder.Services.AddDbContext<FepaDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// 4. Đăng ký Dependency Injection (DI)
+// 3. DI (Dependency Injection)
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IBlogRepository, BlogRepository>();
+builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+builder.Services.AddScoped<IVerificationTokenRepository, VerificationTokenRepository>();
+builder.Services.AddScoped<ITokenService>(p => new TokenService(builder.Configuration, p.GetRequiredService<IUserRepository>()));
+builder.Services.AddScoped<IEmailService>(p => new EmailService(builder.Configuration, p.GetRequiredService<ILogger<EmailService>>()));
+builder.Services.AddScoped<IOtpService, OtpService>();
+builder.Services.AddScoped<EmailVerificationService>();
+builder.Services.AddScoped<PasswordResetService>();
+builder.Services.AddScoped<RefreshTokenService>();
+builder.Services.AddScoped<GoogleOAuthService>();
+builder.Services.AddScoped<FacebookOAuthService>();
+builder.Services.AddScoped<RoleService>();
+builder.Services.AddHttpClient();
 
-// 5. Cấu hình xác thực bằng JWT
+// 4. JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
+    .AddJwtBearer(options => {
+        options.TokenValidationParameters = new TokenValidationParameters {
             ValidateIssuer = true,
             ValidateAudience = true,
             ValidateLifetime = true,
@@ -55,34 +58,28 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 var app = builder.Build();
 
-
-
-if (app.Environment.IsDevelopment())
-{
+if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-
-
 app.UseCors("AllowAll");
-
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
-
-using (var scope = app.Services.CreateScope())
-{
+// 5. AUTO RESET & SEED
+using (var scope = app.Services.CreateScope()) {
     var services = scope.ServiceProvider;
-    try
-    {
+    var context = services.GetRequiredService<FepaDbContext>();
+    try {
+        Console.WriteLine("--> DANG LAM SACH DATABASE...");
+        // Xóa sạch user cũ bị lỗi format mật khẩu
+        await context.Database.ExecuteSqlRawAsync("TRUNCATE TABLE \"Users\" RESTART IDENTITY CASCADE;");
+        // Tạo lại admin chuẩn
         await DbInitializer.SeedAsync(services);
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine("--> LOI KHI KHOI TAO DATABASE: " + ex.Message);
+    } catch (Exception ex) {
+        Console.WriteLine("--> LOI DB: " + ex.Message);
     }
 }
 

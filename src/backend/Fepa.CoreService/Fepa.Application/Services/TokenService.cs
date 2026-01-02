@@ -1,3 +1,4 @@
+/*
 using Fepa.Application.Interfaces;
 using Fepa.Domain.Entities;
 using Microsoft.Extensions.Configuration;
@@ -6,6 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using System.Linq; // Thêm để dùng Enumerable
 
 namespace Fepa.Application.Services
 {
@@ -41,7 +43,7 @@ namespace Fepa.Application.Services
                 issuer: jwtSettings["Issuer"],
                 audience: jwtSettings["Audience"],
                 claims: claims,
-                expires: DateTime.UtcNow.AddHours(1), // Access token 1 hour
+                expires: DateTime.UtcNow.AddHours(1),
                 signingCredentials: creds
             );
 
@@ -58,16 +60,15 @@ namespace Fepa.Application.Services
             }
         }
 
-        public async Task<RefreshToken?> ValidateRefreshTokenAsync(string token)
+        // Đã sửa Task.FromResult để xóa Warning CS1998
+        public Task<RefreshToken?> ValidateRefreshTokenAsync(string token)
         {
-            // This will be called from repository
-            // For now, just return null (implementation in repository)
-            return null;
+            // Implementation sẽ được thực hiện ở Repository sau
+            return Task.FromResult<RefreshToken?>(null);
         }
 
         public string GenerateVerificationToken()
         {
-            // Generate random 32-char alphanumeric token
             var random = new Random();
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             return new string(Enumerable.Range(0, 32)
@@ -90,3 +91,4 @@ namespace Fepa.Application.Services
         }
     }
 }
+/*

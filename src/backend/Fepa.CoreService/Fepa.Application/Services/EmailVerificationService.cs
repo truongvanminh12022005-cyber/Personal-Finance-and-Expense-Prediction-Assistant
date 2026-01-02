@@ -30,11 +30,11 @@ namespace Fepa.Application.Services
          public async Task SendVerificationEmailAsync(string email)
          {
              var user = await _userRepository.GetByEmailAsync(email);
-             if (user == null)
-             {
-                 _logger.LogWarning($"Verification email requested for non-existent email: {email}");
-                 return;   Security: don't reveal if email exists
-             }
+            if (user == null)
+            {
+                _logger.LogWarning($"Verification email requested for non-existent email: {email}");
+                return;   // Security: don't reveal if email exists
+            }
 
              var verificationToken = _tokenService.GenerateVerificationToken();
              var token = new VerificationToken
@@ -45,9 +45,9 @@ namespace Fepa.Application.Services
                  ExpiresAt = DateTime.UtcNow.AddHours(24)
              };
 
-             await _verificationTokenRepository.AddAsync(token);
-             var verificationLink = $"https:app.fepa.vn/verify-email?token={verificationToken}";
-             await _emailService.SendEmailVerificationAsync(user.Email, verificationLink, user.FullName);
+            await _verificationTokenRepository.AddAsync(token);
+            var verificationLink = $"https://app.fepa.vn/verify-email?token={verificationToken}";
+            await _emailService.SendEmailVerificationAsync(user.Email, verificationLink, user.FullName);
 
              _logger.LogInformation($"Verification email sent to {email}");
          }
@@ -78,16 +78,16 @@ namespace Fepa.Application.Services
          public async Task ResendVerificationEmailAsync(string email)
          {
              var user = await _userRepository.GetByEmailAsync(email);
-             if (user == null || user.IsEmailVerified)
-             {
-                 return;   Don't reveal status
-             }
+            if (user == null || user.IsEmailVerified)
+            {
+                return;   // Don't reveal status
+            }
 
-              Invalidate previous tokens
-             var existingTokens = await _verificationTokenRepository.GetByUserIdAndTypeAsync(user.Id, "EmailVerification");
-              Delete or expire existing tokens
+            // Invalidate previous tokens
+            var existingTokens = await _verificationTokenRepository.GetByUserIdAndTypeAsync(user.Id, "EmailVerification");
+            // Delete or expire existing tokens
 
-             await SendVerificationEmailAsync(email);
+            await SendVerificationEmailAsync(email);
          }
 
          public async Task<bool> IsEmailVerifiedAsync(Guid userId)

@@ -32,7 +32,7 @@ namespace Fepa.Application.Services
          {
              var user = await _userRepository.GetByEmailAsync(email);
              if (user == null)
-                 return;   Security: don't reveal if user exists
+                 return;   // Security: don't reveal if user exists
 
              var resetToken = _tokenService.GenerateVerificationToken();
              var verificationToken = new VerificationToken
@@ -43,9 +43,9 @@ namespace Fepa.Application.Services
                  ExpiresAt = DateTime.UtcNow.AddHours(1)
              };
 
-             await _verificationTokenRepository.AddAsync(verificationToken);
-             var resetLink = $"https:app.fepa.vn/reset-password?token={resetToken}";
-             await _emailService.SendPasswordResetEmailAsync(user.Email, resetLink, user.FullName);
+            await _verificationTokenRepository.AddAsync(verificationToken);
+            var resetLink = $"https://app.fepa.vn/reset-password?token={resetToken}";
+            await _emailService.SendPasswordResetEmailAsync(user.Email, resetLink, user.FullName);
          }
 
          public async Task<bool> ResetPasswordAsync(string token, string newPassword)

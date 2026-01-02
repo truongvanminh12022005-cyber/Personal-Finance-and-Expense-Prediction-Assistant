@@ -1,3 +1,4 @@
+/*
 using Fepa.Application.DTOs.Auth;
 using Fepa.Application.Interfaces;
 using Fepa.Domain.Entities;
@@ -5,7 +6,6 @@ using Microsoft.Extensions.Logging;
 
 namespace Fepa.Application.Services
 {
-    /*
     public class RefreshTokenService
     {
         private readonly IRefreshTokenRepository _refreshTokenRepository;
@@ -69,5 +69,5 @@ namespace Fepa.Application.Services
         //     _logger.LogInformation($"All tokens revoked for user {userId}");
         // }
     }
-    */
 }
+/*

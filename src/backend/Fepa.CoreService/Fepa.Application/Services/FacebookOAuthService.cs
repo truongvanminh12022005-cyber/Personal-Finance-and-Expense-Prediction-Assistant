@@ -7,7 +7,6 @@ using System.Net.Http.Json;
 
 namespace Fepa.Application.Services
 {
-    /*
     public class FacebookOAuthService
     {
         private readonly IUserRepository _userRepository;
@@ -102,5 +101,4 @@ namespace Fepa.Application.Services
         //     }
         // }
     }
-    */
 }

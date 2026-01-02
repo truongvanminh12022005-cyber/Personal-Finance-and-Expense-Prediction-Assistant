@@ -126,18 +126,19 @@ namespace Fepa.Application.Services
         {
             try
             {
-                var mailMessage = new MailMessage
+                using (var mailMessage = new MailMessage
                 {
                     From = new MailAddress(_configuration["Email:FromAddress"] ?? "noreply@fepa.com"),
                     Subject = subject,
                     Body = body,
                     IsBodyHtml = true
-                };
+                })
+                {
+                    mailMessage.To.Add(to);
 
-                mailMessage.To.Add(to);
-
-                await _smtpClient.SendMailAsync(mailMessage);
-                _logger.LogInformation($"Email sent successfully to {to}");
+                    await _smtpClient.SendMailAsync(mailMessage);
+                    _logger.LogInformation($"Email sent successfully to {to}");
+                }
             }
             catch (Exception ex)
             {

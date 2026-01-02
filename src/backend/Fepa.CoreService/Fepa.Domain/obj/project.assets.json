@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\tien\\.nuget\\packages\\": {}
+    "C:\\Users\\Van Minh\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj",
       "projectName": "Fepa.Domain",
-      "projectPath": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj",
-      "packagesPath": "C:\\Users\\tien\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\obj\\",
+      "projectPath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj",
+      "packagesPath": "C:\\Users\\Van Minh\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\tien\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Van Minh\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -43,8 +43,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "10.0.100"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -60,26 +59,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.22, 8.0.22]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.22, 8.0.22]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[8.0.22, 8.0.22]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

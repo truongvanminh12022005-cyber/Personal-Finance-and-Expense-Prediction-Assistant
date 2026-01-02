@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.API\\Fepa.API.csproj": {}
+    "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.API\\Fepa.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.API\\Fepa.API.csproj": {
+    "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.API\\Fepa.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.API\\Fepa.API.csproj",
+        "projectUniqueName": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.API\\Fepa.API.csproj",
         "projectName": "Fepa.API",
-        "projectPath": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.API\\Fepa.API.csproj",
-        "packagesPath": "C:\\Users\\tien\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.API\\obj\\",
+        "projectPath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.API\\Fepa.API.csproj",
+        "packagesPath": "C:\\Users\\Van Minh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tien\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Van Minh\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -26,11 +26,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\Fepa.Application.csproj": {
-                "projectPath": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\Fepa.Application.csproj"
+              "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\Fepa.Application.csproj": {
+                "projectPath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\Fepa.Application.csproj"
               },
-              "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Infrastructure\\Fepa.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Infrastructure\\Fepa.Infrastructure.csproj"
+              "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Infrastructure\\Fepa.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Infrastructure\\Fepa.Infrastructure.csproj"
               }
             }
           }
@@ -44,8 +44,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "10.0.100"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -81,24 +80,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[8.0.22, 8.0.22]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -107,21 +88,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\Fepa.Application.csproj": {
+    "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\Fepa.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\Fepa.Application.csproj",
+        "projectUniqueName": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\Fepa.Application.csproj",
         "projectName": "Fepa.Application",
-        "projectPath": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\Fepa.Application.csproj",
-        "packagesPath": "C:\\Users\\tien\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\obj\\",
+        "projectPath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\Fepa.Application.csproj",
+        "packagesPath": "C:\\Users\\Van Minh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tien\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Van Minh\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -133,8 +114,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj": {
-                "projectPath": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj"
+              "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj": {
+                "projectPath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj"
               }
             }
           }
@@ -148,8 +129,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "10.0.100"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -159,6 +139,14 @@
               "target": "Package",
               "version": "[4.0.3, )"
             },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.6.0, )"
+            },
+            "Google.Apis.Auth": {
+              "target": "Package",
+              "version": "[1.73.0, )"
+            },
             "Microsoft.AspNetCore.Http.Abstractions": {
               "target": "Package",
               "version": "[2.3.0, )"
@@ -166,6 +154,14 @@
             "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",
               "version": "[10.0.1, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Otp.NET": {
+              "target": "Package",
+              "version": "[1.4.1, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
@@ -183,40 +179,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj": {
+    "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj",
         "projectName": "Fepa.Domain",
-        "projectPath": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj",
-        "packagesPath": "C:\\Users\\tien\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj",
+        "packagesPath": "C:\\Users\\Van Minh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tien\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Van Minh\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -239,8 +221,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "10.0.100"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -256,40 +237,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Infrastructure\\Fepa.Infrastructure.csproj": {
+    "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Infrastructure\\Fepa.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Infrastructure\\Fepa.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Infrastructure\\Fepa.Infrastructure.csproj",
         "projectName": "Fepa.Infrastructure",
-        "projectPath": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Infrastructure\\Fepa.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\tien\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Infrastructure\\Fepa.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Van Minh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tien\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Van Minh\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -301,11 +268,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\Fepa.Application.csproj": {
-                "projectPath": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\Fepa.Application.csproj"
+              "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\Fepa.Application.csproj": {
+                "projectPath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Application\\Fepa.Application.csproj"
               },
-              "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj": {
-                "projectPath": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj"
+              "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj": {
+                "projectPath": "C:\\Users\\Van Minh\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.CoreService\\Fepa.Domain\\Fepa.Domain.csproj"
               }
             }
           }
@@ -319,8 +286,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "10.0.100"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -346,26 +312,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

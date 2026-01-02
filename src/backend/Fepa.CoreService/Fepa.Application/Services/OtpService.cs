@@ -1,6 +1,8 @@
 using Fepa.Application.Interfaces;
 using OtpNet;
 using System.Text;
+using System;
+using System.Linq;
 
 namespace Fepa.Application.Services
 {
@@ -25,8 +27,9 @@ namespace Fepa.Application.Services
             try
             {
                 var totp = new Totp(Base32Encoding.ToBytes(secret));
-                var timeTolerance = TimeSpan.FromSeconds(30);
-                return totp.VerifyTotp(code, out var window, timeTolerance);
+                // allow window of 1 step before/after (30s step)
+                var window = new VerificationWindow(previous: 1, future: 1);
+                return totp.VerifyTotp(code, out _, window);
             }
             catch
             {

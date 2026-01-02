@@ -1,3 +1,4 @@
+/*
 using Fepa.Domain.Entities;
 
 namespace Fepa.Application.Interfaces
@@ -30,3 +31,4 @@ namespace Fepa.Application.Interfaces
         List<string> GenerateBackupCodes(int count = 10);
     }
 }
+/*

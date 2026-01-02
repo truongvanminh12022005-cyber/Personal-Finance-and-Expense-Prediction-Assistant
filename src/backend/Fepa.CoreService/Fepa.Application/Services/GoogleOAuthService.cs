@@ -7,7 +7,6 @@ using Microsoft.Extensions.Logging;
 
 namespace Fepa.Application.Services
 {
-    /*
     public class GoogleOAuthService
     {
         private readonly IUserRepository _userRepository;
@@ -88,5 +87,4 @@ namespace Fepa.Application.Services
         //     }
         // }
     }
-    */
 }

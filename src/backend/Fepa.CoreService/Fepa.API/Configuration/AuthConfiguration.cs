@@ -23,16 +23,17 @@ namespace Fepa.API.Configuration
             var jwtIssuer = configuration["Jwt:Issuer"];
             var jwtAudience = configuration["Jwt:Audience"];
             services.AddScoped<ITokenService>(provider =>
-                new TokenService(configuration, provider.GetRequiredService<ILogger<TokenService>>()));
+                new TokenService(configuration, provider.GetRequiredService<IUserRepository>()));
 
             // JWT Authentication
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
+                    var jwtKeyValue = configuration["Jwt:Key"] ?? throw new InvalidOperationException("JWT Key not configured");
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKeyValue)),
                         ValidateIssuer = true,
                         ValidIssuer = jwtIssuer,
                         ValidateAudience = true,
@@ -48,6 +49,14 @@ namespace Fepa.API.Configuration
                 options.AddPolicy("PremiumUser", policy => policy.RequireRole("Premium", "Admin"));
                 options.AddPolicy("VerifiedEmail", policy => policy.RequireClaim("EmailVerified", "true"));
             });
+
+            // Additional Auth-related services
+            services.AddScoped<EmailVerificationService>();
+            services.AddScoped<PasswordResetService>();
+            services.AddScoped<RefreshTokenService>();
+            services.AddScoped<GoogleOAuthService>();
+            services.AddScoped<FacebookOAuthService>();
+            services.AddScoped<RoleService>();
 
             return services;
         }

@@ -13,6 +13,10 @@ namespace Fepa.Infrastructure.Persistence
 
         public DbSet<Blog> Blogs { get; set; }
 
+        public DbSet<VerificationToken> VerificationTokens { get; set; }
+
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()

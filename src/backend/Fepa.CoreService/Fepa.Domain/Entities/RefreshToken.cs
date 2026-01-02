@@ -1,3 +1,4 @@
+/*
 namespace Fepa.Domain.Entities
 {
     public class RefreshToken
@@ -17,3 +18,4 @@ namespace Fepa.Domain.Entities
         public User? User { get; set; }
     }
 }
+/*
