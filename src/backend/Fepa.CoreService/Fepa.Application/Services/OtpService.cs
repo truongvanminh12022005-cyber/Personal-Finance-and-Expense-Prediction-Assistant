@@ -52,7 +52,7 @@ namespace Fepa.Application.Services
         {
             try
             {
-                // Backup codes được lưu dưới dạng JSON array hoặc comma-separated
+                
                 var codes = backupCodesJson.Split(',').Select(c => c.Trim()).ToList();
                 return codes.Contains(code);
             }

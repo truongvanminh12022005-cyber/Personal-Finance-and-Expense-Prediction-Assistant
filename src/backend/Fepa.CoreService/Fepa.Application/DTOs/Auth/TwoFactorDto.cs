@@ -9,7 +9,7 @@ namespace Fepa.Application.DTOs.Auth
 
     public class VerifyTwoFactorRequest
     {
-        public string Code { get; set; } = string.Empty; // 6-digit TOTP code
+        public string Code { get; set; } = string.Empty; 
     }
 
     public class TwoFactorLoginRequest

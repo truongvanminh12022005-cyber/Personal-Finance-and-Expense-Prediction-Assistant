@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "bW4hhLpxtXd6wpeELTsrSo7pKxpFORzyK3yyFaiZxTw+UX+BK43GbzgY+c8PQLCd2R0DHqTSUB4CHH+uA1jajQ==",
+  "dgSpecHash": "ylUaw0NIJfE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ASUS\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.ApiGateway\\Fepa.ApiGateway.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\tien\\Desktop\\Personal-Finance-and-Expense-Prediction-Assistant\\src\\backend\\Fepa.ApiGateway\\Fepa.ApiGateway.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tien\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.22\\microsoft.netcore.app.ref.8.0.22.nupkg.sha512",
+    "C:\\Users\\tien\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.22\\microsoft.windowsdesktop.app.ref.8.0.22.nupkg.sha512",
+    "C:\\Users\\tien\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.22\\microsoft.aspnetcore.app.ref.8.0.22.nupkg.sha512",
+    "C:\\Users\\tien\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.22\\microsoft.netcore.app.host.win-x64.8.0.22.nupkg.sha512"
+  ],
   "logs": []
 }
