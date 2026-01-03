@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Fepa.API.Tests
 {
-    /*
+    
     public class EmailServiceTests
     {
         private readonly Mock<IConfiguration> _mockConfiguration;
@@ -21,21 +21,21 @@ namespace Fepa.API.Tests
             _mockConfiguration.Setup(c => c["Email:SmtpPort"]).Returns("587");
         }
 
-        // [Fact]
-        // public async Task SendEmailVerificationAsync_WithValidData_ShouldSucceed()
-        // {
-        //     var email = "user@example.com";
-        //     var link = "https://app.com/verify?token=abc";
-        //     await _emailService.SendEmailVerificationAsync(email, link, "John");
-        // }
+         [Fact]
+         public async Task SendEmailVerificationAsync_WithValidData_ShouldSucceed()
+         {
+             var email = "user@example.com";
+             var link = "https://app.com/verify?token=abc";
+             await _emailService.SendEmailVerificationAsync(email, link, "John");
+         }
 
-        // [Fact]
-        // public async Task SendPasswordResetEmailAsync_WithValidData_ShouldSucceed()
-        // {
-        //     var email = "user@example.com";
-        //     var link = "https://app.com/reset?token=xyz";
-        //     await _emailService.SendPasswordResetEmailAsync(email, link, "John");
-        // }
+         [Fact]
+         public async Task SendPasswordResetEmailAsync_WithValidData_ShouldSucceed()
+         {
+             var email = "user@example.com";
+             var link = "https://app.com/reset?token=xyz";
+             await _emailService.SendPasswordResetEmailAsync(email, link, "John");
+         }
     }
-    */
+    
 }
