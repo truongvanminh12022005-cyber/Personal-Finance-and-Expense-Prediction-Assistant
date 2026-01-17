@@ -55,8 +55,3 @@ namespace Fepa.Infrastructure.Repositories
         }
     }
 }
-
-            return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
-        }
-    }
-}

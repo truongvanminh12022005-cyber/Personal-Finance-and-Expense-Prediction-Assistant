@@ -1,4 +1,4 @@
-namespace Fepa.Application.DTOs.Auth
+/* namespace Fepa.Application.DTOs.Auth
 {
     public class TwoFactorSetupResponse
     {
@@ -19,3 +19,4 @@ namespace Fepa.Application.DTOs.Auth
         public string TwoFactorCode { get; set; } = string.Empty;
     }
 }
+*/ 

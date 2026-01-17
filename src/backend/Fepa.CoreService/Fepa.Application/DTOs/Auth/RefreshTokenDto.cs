@@ -1,4 +1,4 @@
-namespace Fepa.Application.DTOs.Auth
+/* namespace Fepa.Application.DTOs.Auth
 {
     public class RefreshTokenRequest
     {
@@ -12,3 +12,4 @@ namespace Fepa.Application.DTOs.Auth
         public int ExpiresIn { get; set; }
     }
 }
+*/

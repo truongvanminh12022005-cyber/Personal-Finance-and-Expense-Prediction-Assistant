@@ -1,5 +1,8 @@
 using Fepa.Application.Interfaces;
 using OtpNet;
+using System;
+using System.Collections.Generic;
+using System.Linq; // Cần thêm dòng này để dùng .Select và .Contains
 using System.Text;
 
 namespace Fepa.Application.Services
@@ -8,6 +11,7 @@ namespace Fepa.Application.Services
     {
         public string GenerateTotpSecret()
         {
+            // Tạo secret key ngẫu nhiên 32 bytes
             var key = KeyGeneration.GenerateRandomKey(32);
             return Base32Encoding.ToString(key);
         }
@@ -16,6 +20,7 @@ namespace Fepa.Application.Services
         {
             var encodedSecret = Uri.EscapeDataString(secret);
             var encodedEmail = Uri.EscapeDataString(email);
+            // Tạo đường dẫn chuẩn cho Google Authenticator
             var qrCodeUrl = $"otpauth://totp/FEPA:{encodedEmail}?secret={encodedSecret}&issuer=FEPA";
             return qrCodeUrl;
         }
@@ -24,9 +29,19 @@ namespace Fepa.Application.Services
         {
             try
             {
+                if (string.IsNullOrEmpty(secret) || string.IsNullOrEmpty(code))
+                {
+                    return false;
+                }
+
                 var totp = new Totp(Base32Encoding.ToBytes(secret));
-                var timeTolerance = TimeSpan.FromSeconds(30);
-                return totp.VerifyTotp(code, out var window, timeTolerance);
+                
+                // SỬA LỖI TẠI ĐÂY:
+                // Sử dụng VerificationWindow thay vì TimeSpan.
+                // previous: 1, future: 1 nghĩa là chấp nhận mã của 30s trước và 30s sau (để tránh lệch giờ).
+                var window = new VerificationWindow(previous: 1, future: 1);
+
+                return totp.VerifyTotp(code, out long timeStepMatched, window);
             }
             catch
             {
@@ -41,6 +56,7 @@ namespace Fepa.Application.Services
 
             for (int i = 0; i < count; i++)
             {
+                // Tạo mã dự phòng 6 chữ số
                 var code = random.Next(100000, 999999).ToString();
                 codes.Add(code);
             }
@@ -52,8 +68,13 @@ namespace Fepa.Application.Services
         {
             try
             {
-                // Backup codes được lưu dưới dạng JSON array hoặc comma-separated
+                if (string.IsNullOrEmpty(backupCodesJson))
+                {
+                    return false;
+                }
+
                 var codes = backupCodesJson.Split(',').Select(c => c.Trim()).ToList();
+                
                 return codes.Contains(code);
             }
             catch

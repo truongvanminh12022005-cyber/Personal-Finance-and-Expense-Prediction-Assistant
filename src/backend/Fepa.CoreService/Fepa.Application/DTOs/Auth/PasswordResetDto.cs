@@ -1,4 +1,4 @@
-namespace Fepa.Application.DTOs.Auth
+/* namespace Fepa.Application.DTOs.Auth
 {
     public class PasswordResetRequest
     {
@@ -20,3 +20,4 @@ namespace Fepa.Application.DTOs.Auth
         public string ConfirmPassword { get; set; } = string.Empty;
     }
 }
+*/ 

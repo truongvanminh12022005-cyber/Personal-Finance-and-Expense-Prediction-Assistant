@@ -1,4 +1,4 @@
-namespace Fepa.Application.DTOs.Auth
+/* namespace Fepa.Application.DTOs.Auth
 {
     public class RegisterRequest
     {
@@ -7,3 +7,4 @@ namespace Fepa.Application.DTOs.Auth
         public string Password { get; set; } = string.Empty;
     }
 }
+*/ 

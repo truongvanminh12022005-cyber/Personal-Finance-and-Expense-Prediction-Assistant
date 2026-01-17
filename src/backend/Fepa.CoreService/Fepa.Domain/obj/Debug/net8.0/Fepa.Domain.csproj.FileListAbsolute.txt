@@ -34,3 +34,15 @@ C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\
 C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Domain\obj\Debug\net8.0\refint\Fepa.Domain.dll
 C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Domain\obj\Debug\net8.0\Fepa.Domain.pdb
 C:\Users\Van Minh\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Domain\obj\Debug\net8.0\ref\Fepa.Domain.dll
+C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Domain\bin\Debug\net8.0\Fepa.Domain.deps.json
+C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Domain\bin\Debug\net8.0\Fepa.Domain.dll
+C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Domain\bin\Debug\net8.0\Fepa.Domain.pdb
+C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Domain\obj\Debug\net8.0\Fepa.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Domain\obj\Debug\net8.0\Fepa.Domain.AssemblyInfoInputs.cache
+C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Domain\obj\Debug\net8.0\Fepa.Domain.AssemblyInfo.cs
+C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Domain\obj\Debug\net8.0\Fepa.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Domain\obj\Debug\net8.0\Fepa.Domain.sourcelink.json
+C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Domain\obj\Debug\net8.0\Fepa.Domain.dll
+C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Domain\obj\Debug\net8.0\refint\Fepa.Domain.dll
+C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Domain\obj\Debug\net8.0\Fepa.Domain.pdb
+C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.Domain\obj\Debug\net8.0\ref\Fepa.Domain.dll

@@ -13,18 +13,43 @@ const LoginPage = () => {
   const onFinish = async (values) => {
     setLoading(true);
     try {
+      // Gọi API login
       const response = await authApi.login({
         email: values.email,
         password: values.password
       });
 
-      if (response.token) {
-        localStorage.setItem('accessToken', response.token);
+      console.log("--> Debug Response:", response); // Bật F12 Console để xem kết quả
+
+      const token = response.accessToken || response.token || response.access_token;
+
+      if (token) {
+        // 1. Lưu Access Token quan trọng nhất
+        localStorage.setItem('accessToken', token);
+        
+        // 2. Lưu Refresh Token (nếu có - dùng để gia hạn đăng nhập)
+        if (response.refreshToken) {
+            localStorage.setItem('refreshToken', response.refreshToken);
+        }
+
+        // 3. Lưu thông tin User (để hiển thị tên, avatar...)
+        if (response.user) {
+            localStorage.setItem('user', JSON.stringify(response.user));
+        }
+
         message.success('Đăng nhập thành công!');
+        
+        // 4. Chuyển hướng vào trang Dashboard
         navigate('/admin/dashboard');
+      } else {
+        // Trường hợp API trả về thành công nhưng thiếu Token
+        console.error("Lỗi: Không tìm thấy Token trong phản hồi:", response);
+        message.error('Lỗi hệ thống: Server không trả về Token.');
       }
+
     } catch (error) {
-      message.error('Đăng nhập thất bại! Kiểm tra lại thông tin.');
+      console.error("Lỗi đăng nhập:", error);
+      message.error('Đăng nhập thất bại! Vui lòng kiểm tra lại Email và Mật khẩu.');
     } finally {
       setLoading(false);
     }
@@ -74,7 +99,10 @@ const LoginPage = () => {
         >
           <Form.Item
             name="email"
-            rules={[{ required: true, message: 'Vui lòng nhập Email!' }]}
+            rules={[
+                { required: true, message: 'Vui lòng nhập Email!' },
+                { type: 'email', message: 'Email không hợp lệ!' }
+            ]}
           >
             <Input 
               prefix={<UserOutlined style={{ color: '#1890ff' }} />} 

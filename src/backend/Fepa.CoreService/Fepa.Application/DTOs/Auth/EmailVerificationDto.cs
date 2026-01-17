@@ -1,4 +1,4 @@
-namespace Fepa.Application.DTOs.Auth
+/*namespace Fepa.Application.DTOs.Auth
 {
     public class EmailVerificationRequest
     {
@@ -11,3 +11,4 @@ namespace Fepa.Application.DTOs.Auth
         public string Email { get; set; } = string.Empty;
     }
 }
+*/

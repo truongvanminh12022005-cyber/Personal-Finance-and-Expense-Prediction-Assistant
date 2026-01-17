@@ -18,12 +18,17 @@ namespace Fepa.API.Configuration
             // OTP Service Configuration
             services.AddScoped<IOtpService, OtpService>();
 
-            // Token Service Configuration
-            var jwtKey = configuration["Jwt:Key"];
+            // Token Service Configuration (ĐÃ SỬA LẠI: CHỈ TRUYỀN 2 THAM SỐ)
+            var jwtKey = configuration["Jwt:Key"] ?? "";
             var jwtIssuer = configuration["Jwt:Issuer"];
             var jwtAudience = configuration["Jwt:Audience"];
+
             services.AddScoped<ITokenService>(provider =>
-                new TokenService(configuration, provider.GetRequiredService<ILogger<TokenService>>()));
+                new TokenService(
+                    configuration,
+                    provider.GetRequiredService<IUserRepository>()
+                    // Đã xóa dòng Logger vì TokenService của bạn không cần nó
+                ));
 
             // JWT Authentication
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

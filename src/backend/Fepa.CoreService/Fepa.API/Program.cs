@@ -1,29 +1,28 @@
 using Fepa.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Fepa.Application.Interfaces;
 using Fepa.Application.Services;
 using Fepa.Infrastructure.Repositories;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
+using Fepa.API.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-Console.WriteLine("--> PHIEN BAN CODE MOI: CO DATA SEEDING (AUTO ADMIN) <--");
+Console.WriteLine("--> PHIEN BAN CODE MOI: FIX CORS (ALLOW PORT 3000) <--");
 
-// 1. Cấu hình CORS (Cho phép Web Admin truy cập)
+// -----------------------------------------------------------------------------
+// 1. Cấu hình CORS (QUAN TRỌNG: Sửa lại để chấp nhận React App)
+// -----------------------------------------------------------------------------
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", policy =>
+    options.AddPolicy("AllowReactApp", policy =>
     {
-        policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader();
+        policy.WithOrigins("http://localhost:3000") // Chỉ định rõ nguồn Frontend
+              .AllowAnyMethod()                     // Cho phép GET, POST, PUT, DELETE...
+              .AllowAnyHeader();                    // Cho phép gửi Token (Authorization)
     });
 });
 
-// 2. Đăng ký các dịch vụ (Services)
+// 2. Đăng ký các dịch vụ cơ bản
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -34,50 +33,47 @@ builder.Services.AddDbContext<FepaDbContext>(options =>
 
 // 4. Đăng ký Dependency Injection (DI)
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 
-// 5. Cấu hình xác thực bằng JWT
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = builder.Configuration["Jwt:Issuer"],
-            ValidAudience = builder.Configuration["Jwt:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
-        };
-    });
+// 5. Đăng ký Auth Services (JWT, Email, OTP...)
+builder.Services.AddAuthServices(builder.Configuration);
+
+// Đăng ký Logic chính
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
 
+// --- Cấu hình Pipeline (Middleware) ---
 
-
-if (app.Environment.IsDevelopment())
+// 1. Swagger (Tài liệu API)
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction()) // Cho hiện cả lúc chạy Docker
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+app.UseHttpsRedirection();
 
+// 2. Kích hoạt CORS (Phải đặt TRƯỚC Authentication)
+app.UseCors("AllowReactApp");
 
-app.UseCors("AllowAll");
-
-app.UseAuthentication();
+// 3. Xác thực & Phân quyền
+app.UseAuthentication(); 
 app.UseAuthorization();
 
 app.MapControllers();
 
-
+// --- Data Seeding (Tạo dữ liệu mẫu) ---
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     try
     {
+        var context = services.GetRequiredService<FepaDbContext>();
+        // Tự động tạo bảng
+        context.Database.Migrate();
+
+        // Tự động tạo Admin
         await DbInitializer.SeedAsync(services);
     }
     catch (Exception ex)

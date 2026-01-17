@@ -1,4 +1,4 @@
-namespace Fepa.Application.DTOs.Auth
+/* namespace Fepa.Application.DTOs.Auth
 {
     public class LoginResponse
     {
@@ -9,3 +9,4 @@ namespace Fepa.Application.DTOs.Auth
         public bool RequiresTwoFactor { get; set; } = false;
     }
 }
+*/ 
