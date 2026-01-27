@@ -1,12 +1,17 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-// Import các trang
+// 1. Import các trang cũ
 import LoginPage from './pages/Auth/LoginPage';
 import MainLayout from './layouts/MainLayout';
-import DashboardPage from './pages/admin/DashboardPage'; // <-- File mới tạo ở bước 1
-import UserPage from './pages/Users/UserPage';          // <-- File mới tạo ở bước 2
-import BlogPage from './pages/Blogs/BlogPage';          // <-- File mới tạo ở bước 3
+import DashboardPage from './pages/admin/DashboardPage';
+import UserPage from './pages/Users/UserPage';
+import BlogPage from './pages/Blogs/BlogPage';
+import SettingsPage from './pages/Settings/SettingsPage';
+
+// 2. 👇 IMPORT CÁC TRANG MỚI VỪA LÀM 👇
+import AdsPage from './pages/Ads/AdsPage';
+import SubscriptionPage from './pages/Subscriptions/SubscriptionPage';
 
 const App = () => {
   return (
@@ -14,23 +19,32 @@ const App = () => {
       <Routes>
         {/* Chuyển hướng mặc định về Login */}
         <Route path="/" element={<Navigate to="/login" replace />} />
-        
+
         {/* Trang Login */}
         <Route path="/login" element={<LoginPage />} />
 
         {/* Khu vực Admin (Được bảo vệ bởi MainLayout) */}
         <Route path="/admin" element={<MainLayout />}>
+
+          {/* Tự động vào Dashboard nếu chỉ gõ /admin */}
+          <Route index element={<Navigate to="dashboard" replace />} />
+
           {/* Dashboard chính */}
           <Route path="dashboard" element={<DashboardPage />} />
-          
+
           {/* Quản lý Users */}
           <Route path="users" element={<UserPage />} />
-          
+
           {/* Quản lý Blogs */}
           <Route path="blogs" element={<BlogPage />} />
 
-          {/* Cấu hình (Tạm thời dẫn về dashboard hoặc tạo trang Settings sau) */}
-          <Route path="settings" element={<h2>⚙️ Trang cấu hình hệ thống (Đang phát triển)</h2>} />
+          {/* 👇 CÁC ROUTE MỚI THÊM VÀO 👇 */}
+          <Route path="ads" element={<AdsPage />} />
+          <Route path="subscriptions" element={<SubscriptionPage />} />
+          {/* ----------------------------- */}
+
+          {/* Cấu hình */}
+          <Route path="settings" element={<SettingsPage />} />
         </Route>
 
         {/* Xử lý 404 - Trang không tồn tại */}

@@ -1,4 +1,7 @@
 {
   "name": "FepaMobile",
-  "displayName": "FepaMobile"
+  "displayName": "FepaMobile",
+  "plugins": [
+    "expo-asset"
+  ]
 }

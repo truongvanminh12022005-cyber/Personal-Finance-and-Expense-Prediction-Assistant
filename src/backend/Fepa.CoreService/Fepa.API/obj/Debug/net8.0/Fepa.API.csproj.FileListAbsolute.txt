@@ -260,7 +260,6 @@ C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa
 C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.API\obj\Debug\net8.0\Fepa.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.API\obj\Debug\net8.0\Fepa.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.API\obj\Debug\net8.0\Fepa.API.sourcelink.json
-C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.API\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.API\bin\Debug\net8.0\appsettings.json
 C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.API\bin\Debug\net8.0\Fepa.API.exe
 C:\Users\ASUS\Personal-Finance-and-Expense-Prediction-Assistant\src\backend\Fepa.CoreService\Fepa.API\bin\Debug\net8.0\Fepa.API.deps.json

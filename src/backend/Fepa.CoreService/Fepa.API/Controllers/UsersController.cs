@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization; 
+using Microsoft.AspNetCore.Authorization;
 using Fepa.Application.Interfaces;
 using Fepa.Domain.Entities;
 
@@ -34,7 +34,7 @@ namespace Fepa.API.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous] 
+        [AllowAnonymous]
         public async Task<IActionResult> Create(User user)
         {
             // Kiểm tra email trùng

@@ -1,8 +1,8 @@
+using System.Net;
+using System.Net.Mail;
 using Fepa.Application.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using System.Net;
-using System.Net.Mail;
 
 namespace Fepa.Application.Services
 {
@@ -10,140 +10,87 @@ namespace Fepa.Application.Services
     {
         private readonly IConfiguration _configuration;
         private readonly ILogger<EmailService> _logger;
-        private readonly SmtpClient _smtpClient;
 
         public EmailService(IConfiguration configuration, ILogger<EmailService> logger)
         {
             _configuration = configuration;
             _logger = logger;
-
-            var smtpSettings = _configuration.GetSection("Email:Smtp");
-            _smtpClient = new SmtpClient
-            {
-                Host = smtpSettings["Host"] ?? "smtp.gmail.com",
-                Port = int.Parse(smtpSettings["Port"] ?? "587"),
-                EnableSsl = true,
-                Credentials = new NetworkCredential(
-                    smtpSettings["Username"],
-                    smtpSettings["Password"]
-                )
-            };
         }
 
-        public async Task SendEmailVerificationAsync(string email, string verificationLink, string fullName)
+        // --- HÀM GỬI MAIL TRUNG TÂM ---
+        private async Task SendEmailAsync(string toEmail, string subject, string body)
         {
             try
             {
-                var subject = "Xác minh Email - FEPA";
-                var body = $@"
-                    <h2>Xin chào {fullName},</h2>
-                    <p>Vui lòng xác minh email của bạn bằng cách click vào link dưới đây:</p>
-                    <a href='{verificationLink}'>Xác minh Email</a>
-                    <p>Link này sẽ hết hạn sau 24 giờ.</p>
-                    <p>Nếu bạn không yêu cầu xác minh này, vui lòng bỏ qua email này.</p>
-                    <p>Trân trọng,<br/>FEPA Team</p>
-                ";
+                // THÔNG TIN CẤU HÌNH CỨNG (Để test cho chạy 100%)
+                var fromAddress = "nguyenthingoctram7524@gmail.com";
+                var smtpUser = "nguyenthingoctram7524@gmail.com";
+                var smtpPass = "osnhvluqpglzlulp"; // Mật khẩu ứng dụng của bạn
+                var smtpHost = "smtp.gmail.com";
+                var smtpPort = 587;
 
-                await SendEmailAsync(email, subject, body);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Error sending verification email to {email}");
-                throw;
-            }
-        }
+                _logger.LogInformation($"[Backend] Đang gửi mail tới: {toEmail}...");
 
-        public async Task SendPasswordResetEmailAsync(string email, string resetLink, string fullName)
-        {
-            try
-            {
-                var subject = "Đặt Lại Mật Khẩu - FEPA";
-                var body = $@"
-                    <h2>Xin chào {fullName},</h2>
-                    <p>Bạn đã yêu cầu đặt lại mật khẩu. Click vào link dưới đây để tạo mật khẩu mới:</p>
-                    <a href='{resetLink}'>Đặt Lại Mật Khẩu</a>
-                    <p>Link này sẽ hết hạn sau 1 giờ.</p>
-                    <p>Nếu bạn không yêu cầu này, vui lòng bỏ qua email này.</p>
-                    <p>Trân trọng,<br/>FEPA Team</p>
-                ";
+                var client = new SmtpClient(smtpHost, smtpPort)
+                {
+                    Credentials = new NetworkCredential(smtpUser, smtpPass),
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false
+                };
 
-                await SendEmailAsync(email, subject, body);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Error sending password reset email to {email}");
-                throw;
-            }
-        }
-
-        public async Task SendNotificationEmailAsync(string email, string subject, string message)
-        {
-            try
-            {
-                var body = $@"
-                    <h2>Thông báo từ FEPA</h2>
-                    <p>{message}</p>
-                    <p>Trân trọng,<br/>FEPA Team</p>
-                ";
-
-                await SendEmailAsync(email, subject, body);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Error sending notification email to {email}");
-                throw;
-            }
-        }
-
-        public async Task SendWelcomeEmailAsync(string email, string fullName)
-        {
-            try
-            {
-                var subject = "Chào mừng đến FEPA!";
-                var body = $@"
-                    <h2>Xin chào {fullName},</h2>
-                    <p>Chào mừng bạn đến với FEPA - Trợ lý Tài chính Cá nhân của bạn!</p>
-                    <p>Tài khoản của bạn đã được tạo thành công. Bây giờ bạn có thể:</p>
-                    <ul>
-                        <li>Theo dõi chi tiêu của bạn</li>
-                        <li>Lập ngân sách hàng tháng</li>
-                        <li>Xem thống kê chi tiêu</li>
-                    </ul>
-                    <p>Nếu bạn cần hỗ trợ, vui lòng liên hệ với chúng tôi.</p>
-                    <p>Trân trọng,<br/>FEPA Team</p>
-                ";
-
-                await SendEmailAsync(email, subject, body);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Error sending welcome email to {email}");
-                throw;
-            }
-        }
-
-        private async Task SendEmailAsync(string to, string subject, string body)
-        {
-            try
-            {
                 var mailMessage = new MailMessage
                 {
-                    From = new MailAddress(_configuration["Email:FromAddress"] ?? "noreply@fepa.com"),
+                    From = new MailAddress(fromAddress, "FEPA Support"),
                     Subject = subject,
                     Body = body,
                     IsBodyHtml = true
                 };
 
-                mailMessage.To.Add(to);
+                mailMessage.To.Add(toEmail);
 
-                await _smtpClient.SendMailAsync(mailMessage);
-                _logger.LogInformation($"Email sent successfully to {to}");
+                await client.SendMailAsync(mailMessage);
+
+                // In ra Terminal để bạn nhìn thấy
+                Console.WriteLine($"✅ [THÀNH CÔNG] Đã gửi mail cho {toEmail}");
+                _logger.LogInformation($"✅ Đã gửi mail thành công tới {toEmail}");
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error sending email to {to}");
+                Console.WriteLine($"❌ [LỖI] Gửi mail thất bại: {ex.Message}");
+                _logger.LogError($"❌ Lỗi gửi mail: {ex.Message}");
                 throw;
             }
+        }
+
+        // Các hàm chức năng (Bắt buộc phải có đủ 4 hàm này để không lỗi Interface)
+        public async Task SendEmailVerificationAsync(string email, string token, string name)
+        {
+            var subject = "Mã xác thực FEPA";
+            var body = $"<h3>Chào {name},</h3><p>Mã của bạn là: <b>{token}</b></p>";
+            await SendEmailAsync(email, subject, body);
+        }
+
+        public async Task SendPasswordResetEmailAsync(string email, string resetLink, string name)
+        {
+            var subject = "Đặt lại mật khẩu FEPA";
+            var body = $@"
+                <h3>Xin chào {name},</h3>
+                <p>Bạn đã yêu cầu lấy lại mật khẩu.</p>
+                <p>Vui lòng bấm vào link dưới đây để đặt lại mật khẩu mới:</p>
+                <p><a href='{resetLink}' style='color:blue; font-weight:bold;'>BẤM VÀO ĐÂY ĐỂ ĐẶT LẠI MẬT KHẨU</a></p>
+                <p>Nếu không phải bạn, vui lòng bỏ qua email này.</p>";
+            await SendEmailAsync(email, subject, body);
+        }
+
+        public async Task SendNotificationEmailAsync(string email, string subject, string message)
+        {
+            await SendEmailAsync(email, subject, $"<p>{message}</p>");
+        }
+
+        public async Task SendWelcomeEmailAsync(string email, string name)
+        {
+             await SendEmailAsync(email, "Chào mừng đến với FEPA", $"Xin chào {name}, cảm ơn bạn đã tham gia!");
         }
     }
 }

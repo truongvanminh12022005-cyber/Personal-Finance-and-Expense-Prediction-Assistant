@@ -28,7 +28,7 @@ namespace Fepa.Application.Interfaces
         Task<RefreshTokenResponse> RefreshTokenAsync(RefreshTokenRequest request);
         Task RevokeTokenAsync(Guid userId, string token);
 
-        // OAuth
+        // Auth
         Task<LoginResponse> GoogleLoginAsync(OAuthLoginRequest request);
         Task<LoginResponse> FacebookLoginAsync(OAuthLoginRequest request);
     }

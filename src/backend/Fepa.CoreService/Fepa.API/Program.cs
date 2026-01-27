@@ -7,11 +7,8 @@ using Fepa.API.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-Console.WriteLine("--> PHIEN BAN CODE MOI: FIX CORS (ALLOW PORT 3000) <--");
 
-// -----------------------------------------------------------------------------
-// 1. Cấu hình CORS (QUAN TRỌNG: Sửa lại để chấp nhận React App)
-// -----------------------------------------------------------------------------
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
@@ -31,7 +28,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<FepaDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// 4. Đăng ký Dependency Injection (DI)
+// 4. Đăng ký Repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 
@@ -54,7 +51,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction()) // Cho hi
 
 app.UseHttpsRedirection();
 
-// 2. Kích hoạt CORS (Phải đặt TRƯỚC Authentication)
+// 2. Kích hoạt CORS
 app.UseCors("AllowReactApp");
 
 // 3. Xác thực & Phân quyền
@@ -63,7 +60,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// --- Data Seeding (Tạo dữ liệu mẫu) ---
+// Data Seeding
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;

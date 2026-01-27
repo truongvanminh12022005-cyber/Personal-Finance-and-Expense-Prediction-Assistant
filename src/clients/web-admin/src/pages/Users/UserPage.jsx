@@ -9,7 +9,7 @@ const UserPage = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingUser, setEditingUser] = useState(null); 
+  const [editingUser, setEditingUser] = useState(null);
   const [form] = Form.useForm();
 
   // Tải danh sách
@@ -39,16 +39,16 @@ const UserPage = () => {
   // Mở Modal Sửa
   const handleOpenEdit = (record) => {
     setEditingUser(record);
-    form.setFieldsValue(record); 
+    form.setFieldsValue(record);
     setIsModalOpen(true);
   };
 
-  // 4. Xử lý Lưu 
+  // 4. Xử lý Lưu
   const handleSave = async (values) => {
     try {
       if (editingUser) {
         // --- SỬA ---
-        
+
         await userApi.update(editingUser.id, { ...editingUser, ...values });
         message.success('Cập nhật thành công!');
       } else {
@@ -57,7 +57,7 @@ const UserPage = () => {
         message.success('Thêm người dùng thành công!');
       }
       setIsModalOpen(false);
-      fetchUsers(); 
+      fetchUsers();
     } catch (error) {
       message.error(editingUser ? 'Cập nhật thất bại!' : 'Email này đã được sử dụng!');
     }
@@ -97,7 +97,7 @@ const UserPage = () => {
       render: (_, record) => (
         <Space size="middle">
           <Button type="primary" icon={<EditOutlined />} size="small" onClick={() => handleOpenEdit(record)}>Sửa</Button>
-          
+
           <Popconfirm title="Xóa người này?" onConfirm={() => handleDelete(record.id)} okText="Xóa" cancelText="Hủy" okButtonProps={{ danger: true }}>
             <Button type="primary" danger icon={<DeleteOutlined />} size="small">Xóa</Button>
           </Popconfirm>
@@ -130,7 +130,7 @@ const UserPage = () => {
           </Form.Item>
 
           <Form.Item name="email" label="Email" rules={[{ required: true, type: 'email', message: 'Email không hợp lệ!' }]}>
-            <Input disabled={!!editingUser} /> 
+            <Input disabled={!!editingUser} />
             {/* Khi sửa thì khóa ô Email lại để tránh lỗi hệ thống */}
           </Form.Item>
 

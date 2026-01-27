@@ -8,7 +8,9 @@ import {
   FileTextOutlined,
   SettingOutlined,
   LogoutOutlined,
-  TeamOutlined
+  TeamOutlined,
+  NotificationOutlined, // Icon cho Quảng cáo
+  CrownOutlined        // Icon cho Gói cước (Premium)
 } from '@ant-design/icons';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 
@@ -19,7 +21,7 @@ const MainLayout = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [user, setUser] = useState(null);
-  
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -51,12 +53,12 @@ const MainLayout = () => {
     items: [
       { key: '1', label: 'Hồ sơ cá nhân', icon: <UserOutlined /> },
       { type: 'divider' },
-      { 
-        key: 'logout', 
-        label: 'Đăng xuất', 
-        icon: <LogoutOutlined />, 
-        danger: true, 
-        onClick: handleLogout // Gọi hàm đăng xuất
+      {
+        key: 'logout',
+        label: 'Đăng xuất',
+        icon: <LogoutOutlined />,
+        danger: true,
+        onClick: handleLogout
       },
     ]
   };
@@ -70,17 +72,16 @@ const MainLayout = () => {
             {collapsed ? 'FP' : 'FEPA ADMIN'}
           </h1>
         </div>
-        
+
         <Menu
           theme="dark"
           mode="inline"
           defaultSelectedKeys={[location.pathname]}
-          // Xử lý khi bấm vào menu
           onClick={({ key }) => {
             if (key === 'logout-sidebar') {
-                handleLogout(); // Nếu bấm nút đăng xuất ở sidebar
+                handleLogout();
             } else {
-                navigate(key); // Nếu bấm các nút khác thì chuyển trang
+                navigate(key);
             }
           }}
           items={[
@@ -99,20 +100,31 @@ const MainLayout = () => {
               icon: <FileTextOutlined />,
               label: 'Quản lý Bài viết',
             },
+            // --- 👇 MODULE MỚI THÊM VÀO 👇 ---
             {
-              type: 'divider', // Đường gạch ngang phân cách
+              key: '/admin/ads',
+              icon: <NotificationOutlined />,
+              label: 'Quản lý Quảng cáo',
+            },
+            {
+              key: '/admin/subscriptions',
+              icon: <CrownOutlined />,
+              label: 'Gói cước (Premium)',
+            },
+            // ----------------------------------
+            {
+              type: 'divider',
             },
             {
               key: '/admin/settings',
               icon: <SettingOutlined />,
               label: 'Cấu hình hệ thống',
             },
-            // --- THÊM NÚT ĐĂNG XUẤT VÀO MENU TRÁI ---
             {
               key: 'logout-sidebar',
               icon: <LogoutOutlined />,
               label: 'Đăng xuất',
-              danger: true, // Màu đỏ cảnh báo
+              danger: true,
             },
           ]}
         />
@@ -127,17 +139,15 @@ const MainLayout = () => {
             onClick={() => setCollapsed(!collapsed)}
             style={{ fontSize: '16px', width: 64, height: 64 }}
           />
-          
+
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            {/* Hiển thị tên Admin lấy từ LocalStorage */}
             <span style={{ fontWeight: 500 }}>Xin chào, {user?.fullName || 'Admin'}</span>
-            
-            {/* Avatar có menu sổ xuống */}
+
             <Dropdown menu={userMenu} placement="bottomRight" arrow>
-              <Avatar 
-                style={{ backgroundColor: '#1890ff', cursor: 'pointer' }} 
-                icon={<UserOutlined />} 
-                src={user?.avatarUrl} // Nếu có ảnh thì hiện, ko thì hiện icon
+              <Avatar
+                style={{ backgroundColor: '#1890ff', cursor: 'pointer' }}
+                icon={<UserOutlined />}
+                src={user?.avatarUrl}
               />
             </Dropdown>
           </div>

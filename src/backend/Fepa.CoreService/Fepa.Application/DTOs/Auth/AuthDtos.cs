@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Fepa.Domain.Entities; // Cần dòng này để nhận diện class User
+using Fepa.Domain.Entities;
 
 namespace Fepa.Application.DTOs.Auth
 {
-    // --- CÁC CLASS PHỤ TRỢ (HELPER) ---
     public class UserDto
     {
         public Guid Id { get; set; }
@@ -13,7 +12,6 @@ namespace Fepa.Application.DTOs.Auth
         public string Email { get; set; } = string.Empty;
         public string Role { get; set; } = string.Empty;
 
-        // --- BỔ SUNG HÀM MAPPING (Sửa lỗi CS0117) ---
         public static UserDto FromEntity(User user)
         {
             return new UserDto
@@ -21,13 +19,12 @@ namespace Fepa.Application.DTOs.Auth
                 Id = user.Id,
                 FullName = user.FullName,
                 Email = user.Email,
-                // Chuyển Role sang string (hoặc giữ nguyên nếu Role là string)
+                // Chuyển Role sanh chuỗi
                 Role = user.Role.ToString() 
             };
         }
     }
 
-    // --- CÁC REQUEST (Dữ liệu gửi lên) ---
 
     // 1. Đăng ký
     public class RegisterRequest
@@ -125,7 +122,7 @@ namespace Fepa.Application.DTOs.Auth
         public string IdToken { get; set; } = string.Empty;
     }
 
-    // --- CÁC RESPONSE (Dữ liệu trả về) ---
+    // Cac ket qua tra ve
 
     // Kết quả Login
     public class LoginResponse
@@ -134,7 +131,7 @@ namespace Fepa.Application.DTOs.Auth
         public string RefreshToken { get; set; } = string.Empty;
         public bool RequiresTwoFactor { get; set; }
         
-        // SỬA LỖI CS0029: Đổi từ DateTime sang int (để chứa số giây)
+
         public int ExpiresIn { get; set; } 
         
         public UserDto User { get; set; }
@@ -145,8 +142,7 @@ namespace Fepa.Application.DTOs.Auth
     {
         public string AccessToken { get; set; } = string.Empty;
         public string RefreshToken { get; set; } = string.Empty;
-        
-        // SỬA LỖI CS0029: Đổi từ DateTime sang int
+
         public int ExpiresIn { get; set; } 
     }
 
@@ -159,6 +155,5 @@ namespace Fepa.Application.DTOs.Auth
         public List<string> BackupCodes { get; set; } = new List<string>();
     }
 
-    // Dùng chung
     public class AuthResponse : LoginResponse { }
 }
